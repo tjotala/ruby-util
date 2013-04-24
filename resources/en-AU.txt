@@ -1,0 +1,2 @@
+$$$/Test/HelloWorld=G'day, mate!
+$$$/Test/HelloPerson=G'day, ^1 ^2!

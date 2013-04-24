@@ -1,0 +1,2 @@
+$$$/Test/HelloWorld=こんにちは、世界
+$$$/Test/HelloPerson=こんにちは、^2 ^1!

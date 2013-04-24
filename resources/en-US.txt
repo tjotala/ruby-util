@@ -1,0 +1,2 @@
+$$$/Test/HelloWorld=Hello, world!
+$$$/Test/HelloPerson=Hello, ^1 ^2!

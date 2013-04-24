@@ -1,0 +1,2 @@
+$$$/Test/HelloWorld=Hyvää päivää, maailma!
+$$$/Test/HelloPerson=Hyvää päivää, ^1 ^2!
