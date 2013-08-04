@@ -1,4 +1,6 @@
-require './util'
+require 'rubygems'
+require 'bundler/setup'
+require File.join(File.dirname(__FILE__), '..', 'lib', File.basename(__FILE__).gsub(/_spec/, ''))
 
 describe Array do
 	before(:all) do
