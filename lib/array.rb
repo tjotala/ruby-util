@@ -76,14 +76,14 @@ class Array
 	unless defined?(stringify)
 		# Convert all elements into strings
 		def stringify
-			map { |item| item.nil? ? nil : item.to_s }
+			map { |item| (item.nil? || !item.respond_to?(:to_s)) ? nil : item.to_s }
 		end
 	end
 
 	unless defined?(symbolify)
 		# Convert all elements into symbols
 		def symbolify
-			map { |item| item.nil? ? nil : item.to_sym }
+			map { |item| (item.nil? || !item.respond_to?(:to_sym)) ? nil : item.to_sym }
 		end
 	end
 end
