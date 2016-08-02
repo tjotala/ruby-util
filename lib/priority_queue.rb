@@ -1,5 +1,3 @@
-#!/usr/bin/ruby
-
 class PriorityQueue
 	def initialize(arr = [ ])
 		reset!(arr)

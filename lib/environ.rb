@@ -1,5 +1,3 @@
-#!/usr/bin/ruby
-
 module Kernel
 	unless defined?(big_endian?)
 		def big_endian?()

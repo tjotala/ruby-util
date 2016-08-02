@@ -1,5 +1,3 @@
-#!/usr/bin/ruby
-
 module ZString
 	class Translation
 		attr_reader :locale_id, :table
