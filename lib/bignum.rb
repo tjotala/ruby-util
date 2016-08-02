@@ -1,5 +1,5 @@
 require 'number_formatter'
 
-class Fixnum
+class Bignum
 	include NumberFormatter
 end
