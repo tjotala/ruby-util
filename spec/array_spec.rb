@@ -130,4 +130,23 @@ describe Array do
 			[ :foo, 1, 'string', nil ].symbolify.should == [ :foo, nil, :string, nil ]
 		end
 	end
+
+	describe "join_sentence" do
+		it "should handle empty array" do
+			@empty.join_sentence.should be_empty
+		end
+
+		it "should handle an array with one item" do
+			[ "foo" ].join_sentence.should == "foo"
+		end
+
+		it "should handle an array with two items" do
+			[ "foo", "bar" ].join_sentence.should == "foo and bar"
+		end
+
+		it "should handle an array with three or more items" do
+			[ "foo", "bar", "goo" ].join_sentence.should == "foo, bar, and goo"
+			[ "foo", "bar", "goo", "ber" ].join_sentence.should == "foo, bar, goo, and ber"
+		end
+	end
 end

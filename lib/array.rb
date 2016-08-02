@@ -1,5 +1,3 @@
-#!/usr/bin/ruby
-
 class Array
 	unless defined?(numbers)
 		# Extract all numbers
@@ -84,6 +82,21 @@ class Array
 		# Convert all elements into symbols
 		def symbolify
 			map { |item| (item.nil? || !item.respond_to?(:to_sym)) ? nil : item.to_sym }
+		end
+	end
+
+	unless defined?(join_sentence)
+		def join_sentence(sep = ", ", two_sep = " and ", final_sep = ", and ")
+			case length
+			when 0
+				""
+			when 1
+				first.to_s
+			when 2
+				join(two_sep)
+			else
+				"#{self[0..-2].join(sep)}#{final_sep}#{last.to_s}"
+			end
 		end
 	end
 end
