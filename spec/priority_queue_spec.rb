@@ -36,10 +36,12 @@ describe PriorityQueue do
 
 	describe "empty?" do
 		it "should return true for an empty queue" do
+			expect(@empty).to be_empty # use predicate matcher
 			expect(@empty.empty?).to be == true
 		end
 
 		it "should return false for non-empty queue" do
+			expect(@sample).not_to be_empty # use predicate matcher
 			expect(@sample.empty?).to be == false
 		end
 	end
