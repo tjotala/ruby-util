@@ -1,5 +1,5 @@
 require 'number_formatter'
 
-class Fixnum
+class Integer
 	include NumberFormatter
 end
