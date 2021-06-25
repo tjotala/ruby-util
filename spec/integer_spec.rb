@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require File.join(File.dirname(__FILE__), '..', 'lib', File.basename(__FILE__).gsub(/_spec/, ''))
 
-describe Fixnum do
+describe Integer do
 	describe "to_comma" do
 		it "should handle zero" do
 			0.to_comma.should == "0"
