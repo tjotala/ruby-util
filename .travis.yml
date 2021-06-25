@@ -1,8 +1,9 @@
 language: ruby
+cache: bundler
 rvm:
   - 2.6
 install:
   - gem install bundler
   - bundle install
 script:
-  - rspec
+  - rspec --format documentation
