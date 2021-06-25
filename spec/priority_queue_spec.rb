@@ -11,48 +11,48 @@ describe PriorityQueue do
 
 	describe "new" do
 		it "should create an empty queue" do
-			@empty.size.should == 0
-			@empty.empty?.should == true
+			expect(@empty.size).to be == 0
+			expect(@empty.empty?).to be == true
 		end
 
 		it "should initialize to a non-empty array" do
-			@sample.size.should == @numbers.size
-			@sample.empty?.should == false
-			@sample.include?(@numbers.sample)
+			expect(@sample.size).to be == @numbers.size
+			expect(@sample.empty?).to be == false
+			expect(@sample).to include(@numbers.sample)
 		end
 	end
 
 	describe "size/count" do
 		it "should return 0 for an empty queue" do
-			@empty.size.should == 0
-			@empty.count.should == 0
+			expect(@empty.size).to be == 0
+			expect(@empty.count).to be == 0
 		end
 
 		it "should return non-zero for non-empty queue" do
-			@sample.size.should == @numbers.size
-			@sample.count.should == @numbers.size
+			expect(@sample.size).to be == @numbers.size
+			expect(@sample.count).to be == @numbers.size
 		end
 	end
 
 	describe "empty?" do
 		it "should return true for an empty queue" do
-			@empty.empty?.should == true
+			expect(@empty.empty?).to be == true
 		end
 
 		it "should return false for non-empty queue" do
-			@sample.empty?.should == false
+			expect(@sample.empty?).to be == false
 		end
 	end
 
 	describe "reset!" do
 		it "should reset to an empty queue" do
 			@sample.reset!
-			@sample.size.should == 0
+			expect(@sample.size).to be == 0
 		end
 
 		it "should reset to a non-empty array" do
 			@empty.reset!(@numbers)
-			@empty.size.should == @numbers.size
+			expect(@empty.size).to be == @numbers.size
 			@empty.include?(@numbers.sample)
 		end
 	end
@@ -60,22 +60,22 @@ describe PriorityQueue do
 	describe "merge!" do
 		it "should merge two empty queues" do
 			@empty.merge!(@empty.dup)
-			@empty.size.should == 0
+			expect(@empty.size).to be == 0
 		end
 
 		it "should merge non-empty queue with empty queue" do
 			@sample.merge!(@empty.dup)
-			@sample.size.should == @numbers.size
-			@sample.top.should == @numbers.max
-			@sample.to_a.should == @numbers.sort.reverse
+			expect(@sample.size).to be == @numbers.size
+			expect(@sample.top).to be == @numbers.max
+			expect(@sample.to_a).to be == @numbers.sort.reverse
 		end
 
 		it "should merge two non-empty queues" do
 			other = [ 150, 200, 50 ]
 			@sample.merge!(PriorityQueue.new(other))
-			@sample.size.should == @numbers.size + other.size
-			@sample.top.should == (@numbers + other).max
-			@sample.to_a.should == (@numbers + other).sort.reverse
+			expect(@sample.size).to be == @numbers.size + other.size
+			expect(@sample.top).to be == (@numbers + other).max
+			expect(@sample.to_a).to be == (@numbers + other).sort.reverse
 		end
 	end
 
@@ -91,62 +91,62 @@ describe PriorityQueue do
 
 	describe "to_a" do
 		it "should return an empty array for an empty queue" do
-			@empty.to_a.should be_empty
+			expect(@empty.to_a).to be_empty
 		end
 
 		it "should return elements in descending order" do
-			@sample.to_a.should == @numbers.sort.reverse
+			expect(@sample.to_a).to be == @numbers.sort.reverse
 		end
 	end
 
 	describe "to_s" do
 		it "should return an empty string for an empty queue" do
-			@empty.to_s.should be_empty
+			expect(@empty.to_s).to be_empty
 		end
 
 		it "should return elements in descending order with default separator" do
-			@sample.to_s.should == @numbers.sort.reverse.join(',')
+			expect(@sample.to_s).to be == @numbers.sort.reverse.join(',')
 		end
 
 		it "should return elements in descending order with different separator" do
-			@sample.to_s('|').should == @numbers.sort.reverse.join('|')
+			expect(@sample.to_s('|')).to be == @numbers.sort.reverse.join('|')
 		end
 	end
 
 	describe "first/top" do
 		it "should return nil with empty queue" do
-			@empty.first.should == nil
-			@empty.top.should == nil
+			expect(@empty.first).to be == nil
+			expect(@empty.top).to be == nil
 		end
 
 		it "should return top item without removing it" do
-			@sample.first.should == @numbers.max
-			@sample.top.should == @numbers.max
-			@sample.size.should == @numbers.size
+			expect(@sample.first).to be == @numbers.max
+			expect(@sample.top).to be == @numbers.max
+			expect(@sample.size).to be == @numbers.size
 		end
 	end
 
 	describe "last/bottom" do
 		it "should return nil with empty queue" do
-			@empty.last.should == nil
-			@empty.bottom.should == nil
+			expect(@empty.last).to be == nil
+			expect(@empty.bottom).to be == nil
 		end
 
 		it "should return last item without removing it" do
-			@numbers.should include(@sample.last)
-			@numbers.should include(@sample.bottom)
-			@sample.size.should == @numbers.size
+			expect(@numbers).to include(@sample.last)
+			expect(@numbers).to include(@sample.bottom)
+			expect(@sample.size).to be == @numbers.size
 		end
 	end
 
 	describe "pop" do
 		it "should throw with empty queue" do
-			@empty.pop.should == nil
+			expect(@empty.pop).to be == nil
 		end
 
 		it "should return top item" do
-			@sample.pop.should == @numbers.max
-			@sample.size.should == @numbers.size - 1
+			expect(@sample.pop).to be == @numbers.max
+			expect(@sample.size).to be == @numbers.size - 1
 		end
 	end
 
@@ -154,16 +154,16 @@ describe PriorityQueue do
 		it "should insert new element to top of empty queue" do
 			sample = @numbers.sample
 			@empty.push(sample)
-			@empty.size.should == 1
-			@empty.top.should == sample
+			expect(@empty.size).to be == 1
+			expect(@empty.top).to be == sample
 		end
 
 		it "should insert and re-balance new elements" do
 			@numbers.each do |n|
 				@empty.push(n)
 			end
-			@empty.size.should == @numbers.size
-			@empty.top.should == @numbers.max
+			expect(@empty.size).to be == @numbers.size
+			expect(@empty.top).to be == @numbers.max
 		end
 	end
 
@@ -171,16 +171,16 @@ describe PriorityQueue do
 		it "should insert new element to top of empty queue" do
 			sample = @numbers.sample
 			@empty << sample
-			@empty.size.should == 1
-			@empty.top.should == sample
+			expect(@empty.size).to be == 1
+			expect(@empty.top).to be == sample
 		end
 
 		it "should insert and re-balance new elements" do
 			@numbers.each do |n|
 				@empty << n
 			end
-			@empty.size.should == @numbers.size
-			@empty.top.should == @numbers.max
+			expect(@empty.size).to be == @numbers.size
+			expect(@empty.top).to be == @numbers.max
 		end
 	end
 end

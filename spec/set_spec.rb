@@ -10,19 +10,19 @@ describe Set do
 
 	describe "toggle" do
 		it "should not modify from empty set" do
-			@empty.toggle("foo", false).should == [ ].to_set
+			expect(@empty.toggle("foo", false)).to be == [ ].to_set
 		end
 
 		it "should modify an empty set" do
-			@empty.toggle("foo", true).should == [ "foo" ].to_set
+			expect(@empty.toggle("foo", true)).to be == [ "foo" ].to_set
 		end
 
 		it "should not modify non-empty set" do
-			@not_empty.toggle("foo", true).should == [ "foo", "bar" ].to_set
+			expect(@not_empty.toggle("foo", true)).to be == [ "foo", "bar" ].to_set
 		end
 
 		it "should modify non-empty set" do
-			@not_empty.toggle("foo", false).should == [ "bar" ].to_set
+			expect(@not_empty.toggle("foo", false)).to be == [ "bar" ].to_set
 		end
 	end
 end
