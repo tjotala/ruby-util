@@ -2,6 +2,7 @@ language: ruby
 rvm:
   - 2.6
 install:
-  - gem install
+  - gem install bundler
+  - bundle install
 script:
   - rspec
