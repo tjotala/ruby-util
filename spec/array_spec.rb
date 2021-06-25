@@ -82,7 +82,7 @@ describe Array do
 
 	describe "histogram" do
 		it "should handle empty array" do
-			expect([ ].histogram) be_empty
+			expect([ ].histogram).to be_empty
 		end
 
 		it "should compute histogram of all elements" do
